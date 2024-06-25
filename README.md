@@ -4,9 +4,9 @@ This repository provides material and instruction accordingly to the lessons pro
 Access to a remote machine will be available to ensure the correct 
 
 #Access to the virtual machine - Instructions
-- [] step 1
-- [] step 2
-- [] step n
+-[] step 1
+-[] step 2
+-[] step n
 #Local installation 
 Necessary softwares:
 + software 1
@@ -32,7 +32,7 @@ eventual footnotes [^1]
 
 [^1]: reference
 <details>
-<summary>First Day</summary>
+<summary># First Day</summary>
 ## Next-generation sequencing technologies and data generation
 ## Sampling protocols and standardization
 ## R tools for microbial ecology studies
@@ -40,7 +40,7 @@ eventual footnotes [^1]
 ## Metabarcoding (amplicon sequencing) analysis workflow
 </details>
 <details>
-<summary>Second Day</summary>
+<summary># Second Day</summary>
 ## Exploring Online Resources and Repositories I
 ## Insights on data visualization and analysis
 ## Metagenomics (shotgun sequencing) analysis workflow
@@ -50,10 +50,10 @@ eventual footnotes [^1]
 </details>
 # Third Day
 <details>
-<summary>Hands-on Metabarcoding</summary>
+<summary>## Hands-on Metabarcoding</summary>
 ## From raw data to community structure insights
 </details>
 <details>
-<summary>Hands-on Metagenomics</summary>
+<summary>## Hands-on Metagenomics</summary>
 ## From raw data to taxonomic and functional insights 
 </details>
