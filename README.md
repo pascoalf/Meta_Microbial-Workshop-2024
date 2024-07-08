@@ -3,6 +3,8 @@ Official repository for the Meta_Microbial workshop which aims at providing an o
 This repository provides material and instruction accordingly to the lessons provided during the workshop and the sections belows are organized to mimic the day by day timeline.
 Access to a remote machine will be available to ensure the correct 
 
+# Ubuntu Windows Subsystem
+
 # Access to the virtual machine - Instructions
 - [ ] step 1
 - [ ] step 2
