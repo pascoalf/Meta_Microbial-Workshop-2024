@@ -10,6 +10,9 @@ Access to a remote machine will be available to ensure the correct
 - [ ] step 2
 - [ ] step n
 
+# Tmux
+tmux instruction
+
 # Local installation 
 Necessary softwares:
 + software 1
