@@ -8,9 +8,9 @@ Access to a remote machine will be available to ensure the correct
 Check if you already have python installed. You  can do so by typing `python` in your terminal.
 
 Otherwise, install python from here:
-[Windows]([https://www.python.org/downloads/release/python-3125/](https://www.python.org/downloads/windows/))
-[Mac]([[https://www.python.org/downloads/release/python-3125/](https://www.python.org/downloads/windows/)](https://www.python.org/downloads/macos/))
-[Linux]([[https://www.python.org/downloads/release/python-3125/](https://www.python.org/downloads/windows/)](https://www.python.org/downloads/source/))
++ [Windows](https://www.python.org/downloads/windows/)
++ [Mac](https://www.python.org/downloads/macos/)
++ [Linux](https://www.python.org/downloads/source/)
 
 After installing python, `pip` should be available as command.
 
