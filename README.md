@@ -3,12 +3,30 @@ Official repository for the Meta_Microbial workshop which aims at providing an o
 This repository provides material and instruction accordingly to the lessons provided during the workshop and the sections belows are organized to mimic the day by day timeline.
 Access to a remote machine will be available to ensure the correct 
 
-# Ubuntu Windows Subsystem
+# Jupyter Notebook & Python
+
+Check if you already have python installed. You  can do so by typing `python` in your terminal.
+
+Otherwise, install python from here:
+[Windows]([https://www.python.org/downloads/release/python-3125/](https://www.python.org/downloads/windows/))
+[Mac]([[https://www.python.org/downloads/release/python-3125/](https://www.python.org/downloads/windows/)](https://www.python.org/downloads/macos/))
+[Linux]([[https://www.python.org/downloads/release/python-3125/](https://www.python.org/downloads/windows/)](https://www.python.org/downloads/source/))
+
+After installing python, `pip` should be available as command.
+
++ Run `pip install notebook` to install jupyter notebook.
++ Run `jupyter notebook` to open jupyter notebook.
+
 
 # Access to the virtual machine - Instructions
-- [ ] step 1
-- [ ] step 2
-- [ ] step n
+
+In order to allow the participants to run the analysis, a server has been provided with 96 threads, 640 GB of RAM, and 2 TB of storage.
+To access the machine, please do:
+
+- [ ] download thhe "my_ecdsa_key" file 
+- [ ] access using `ssh -i my_ecdsa_key alunoNUMBER@34.71.198.208`
+
+Where `NUMBER` is a two-digit integer from 0 to 40.
 
 # Tmux
 > tmux is a terminal multiplexer. It lets you switch easily between several programs in one terminal, detach them (they keep running in the background) and reattach them to a different terminal.
