@@ -20,6 +20,8 @@ After installing python, `pip` should be available as command.
 + Run `pip install notebook` to install jupyter notebook.
 + Run `jupyter notebook` to open jupyter notebook.
 
+An additional package required for the HandsOn in Metagenomics is `BioPython`.
+To install it, run `pip install biopython`.
 
 # Access to the virtual machine - Instructions
 
