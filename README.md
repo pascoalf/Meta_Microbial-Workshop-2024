@@ -3,6 +3,9 @@ Official repository for the Meta_Microbial workshop which aims at providing an o
 This repository provides material and instruction accordingly to the lessons provided during the workshop and the sections belows are organized to mimic the day by day timeline.
 Access to a remote machine will be available to ensure the correct 
 
+> [!IMPORTANT]
+> It is recommended that participants arrive with all the required programs installed properly. Carefully reading this GitHub page is also recommended.
+
 # Jupyter Notebook & Python
 
 Check if you already have python installed. You  can do so by typing `python` in your terminal.
@@ -23,13 +26,14 @@ After installing python, `pip` should be available as command.
 In order to allow the participants to run the analysis, a server has been provided with 96 threads, 640 GB of RAM, and 2 TB of storage.
 To access the machine, please do:
 
-- [ ] download thhe "my_ecdsa_key" file 
-- [ ] access using `ssh -i my_ecdsa_key alunoNUMBER@34.71.198.208`
++ download thhe "my_ecdsa_key" file 
++ access using `ssh -i my_ecdsa_key alunoNUMBER@34.71.198.208`
 
 Where `NUMBER` is a two-digit integer from 0 to 40.
 
 # Tmux
 > tmux is a terminal multiplexer. It lets you switch easily between several programs in one terminal, detach them (they keep running in the background) and reattach them to a different terminal.
+
 `tmux` will be used to ensure your analysis will keep running in case of connection issues or other kind of technical problems.
 
 To open a new session
@@ -53,31 +57,6 @@ To get a list of the currently existing session
 ```
 tmux ls
 ```
-
-# Local installation 
-Necessary softwares:
-+ Jupyter Notebook
-+ Python 3
-+ software n
-
-> [!NOTE]
-> Useful information that users should know, even when skimming content.
-
-> [!TIP]
-> It is .
-
-> [!IMPORTANT]
-> It is recommended that participants arrive with all the required programs installed properly. Carefully reading this GitHub page is also recommended.
-
-> [!WARNING]
-> Urgent info that needs immediate user attention to avoid problems.
-
-> [!CAUTION]
-> Advises about risks or negative outcomes of certain actions.
-
-eventual footnotes [^1]
-
-[^1]: reference
 
 # First Day
 ## Next-generation sequencing technologies and data generation
