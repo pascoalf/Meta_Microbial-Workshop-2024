@@ -137,3 +137,13 @@ scp -i Documents/CIIMAR/LEC_METAG_MICROBIAL/my_ecdsa_key nicola@34.71.198.208:me
 
 scp -r -i Documents/CIIMAR/LEC_METAG_MICROBIAL/my_ecdsa_key nicola@34.71.198.208:metabat/final.contigs.fa.metabat-bins-20240819_221948 Downloads/.
 ```
+
+```
+exec_annotation --profile=../../mnt/disk_2TB/kofam_scan-master/profiles --ko-list=../../mnt/disk_2TB/kofam_scan-master/ko_list --cpu=96 -o kofam/bin.1.ko.txt prodig/bin1.proteins.faa && exec_annotation --profile=../../mnt/disk_2TB/kofam_scan-master/profiles --ko-list=../../mnt/disk_2TB/kofam_scan-master/ko_list --cpu=96 -o kofam/bin.6.ko.txt prodig/bin6.proteins.faa && exec_annotation --profile=../../mnt/disk_2TB/kofam_scan-master/profiles --ko-list=../../mnt/disk_2TB/kofam_scan-master/ko_list --cpu=96 -o kofam/bin.12.ko.txt prodig/bin12.proteins.faa
+```
+
+```
+cat bin.6.ko.txt | t='*' awk '$1!=ENVIRON["t"]{print $1, $2}' > bin.6.mapper.txt
+cat bin.1.ko.txt | t='*' awk '$1!=ENVIRON["t"]{print $1, $2}' > bin.1.mapper.txt
+cat bin.12.ko.txt | t='*' awk '$1!=ENVIRON["t"]{print $1, $2}' > bin.12.mapper.txt
+```
