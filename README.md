@@ -28,10 +28,10 @@ To install it, run `pip install biopython`.
 In order to allow the participants to run the analysis, a server has been provided with 96 threads, 640 GB of RAM, and 2 TB of storage.
 To access the machine, please do:
 
-+ download thhe "my_ecdsa_key" file 
++ download the "my_ecdsa_key" file 
 + access using `ssh -i my_ecdsa_key alunoNUMBER@34.71.198.208`
 
-Where `NUMBER` is a two-digit integer from 0 to 40.
+`NUMBER` and the ssh key will be provided during the workshop.
 
 # Tmux
 > tmux is a terminal multiplexer. It lets you switch easily between several programs in one terminal, detach them (they keep running in the background) and reattach them to a different terminal.
