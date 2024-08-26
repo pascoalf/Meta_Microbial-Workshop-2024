@@ -82,6 +82,10 @@ tmux ls
 ### From raw data to taxonomic and functional insights 
 
 ```
+mkdir fastqc_r
+```
+
+```
 fastqc -o fastqc_r --threads 96 raw_data/M19-81_METAG_R1.fastq raw_data/M19-81_METAG_R2.fastq raw_data/M19-84_METAG_R1.fastq raw_data/M19-84_METAG_R2.fastq raw_data/M19-88_METAG_R1.fastq raw_data/M19-88_METAG_R2.fastq
 ```
 
@@ -102,6 +106,10 @@ metaquast -t 96 -o quast mega/final.contigs.fa
 ```
 
 ```
+bowtie2-build --threads 96 -f ../mega/final.contigs.fa bw
+```
+
+```
 bowtie2 -x bw -1 ../raw_data/M19-81_METAG_R1.fastq -2 ../raw_data/M19-81_METAG_R2.fastq -q --phred33  --threads 96 > M19-81.sam 2> M19-81.log
 
 bowtie2 -x bw -1 ../raw_data/M19-84_METAG_R1.fastq -2 ../raw_data/M19-84_METAG_R2.fastq -q --phred33  --threads 96 > M19-84.sam 2> M19-84.log 
@@ -112,6 +120,15 @@ bowtie2 -x bw -1 ../raw_data/M19-88_METAG_R1.fastq -2 ../raw_data/M19-88_METAG_R
 ```
 samtools sort M19-81.sam -o M19-81.bam && samtools sort M19-84.sam -o M19-84.bam && samtools sort M19-88.sam -o M19-88.bam
 ```
+
+```
+mkdir bowtie
+```
+
+```
+mv *.bam bowtie/.
+```
+
 
 ```
 runMetaBat.sh mega/final.contigs.fa bowtie/M19-81.bam bowtie/M19-84.bam bowtie/M19-88.bam
