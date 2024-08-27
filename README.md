@@ -64,16 +64,16 @@ tmux ls
 ## Next-generation sequencing technologies and data generation
 ## Sampling protocols and standardization
 ## R tools for microbial ecology studies
-[LINK1](url)
+[Folder with lecture content](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/R-tools-for-microbial-ecology)
 
 ## Python in microbial ecology studies
 ## Metabarcoding (amplicon sequencing) analysis workflow
-[LINK2](/Metbarcoding-lectures)
+[Folder with lecture content]([/Metbarcoding-lectures](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/Metabarcoding-lectures))
 
 # Second Day
 ## Exploring Online Resources and Repositories I
 ## Insights on data visualization and analysis
-[LINK3](/Data-visualization)
+[Folder with lecture content]([/Data-visualization](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/Data-visualization))
 
 ## Metagenomics (shotgun sequencing) analysis workflow
 ## Phylogenetic trees from high-throughput sequence data
@@ -83,19 +83,31 @@ tmux ls
 # Third Day
 ## Hands-on Metabarcoding</summary>
 ### From raw data to community structure insights
-[LINK4](url)
+[Folder with lecture content]([url](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/Hands-on-Metabarcoding/Downstream))
 
 ## Hands-on Metagenomics</summary>
 ### From raw data to taxonomic and functional insights 
 
+##### 1st Quality Check
+
+The first step of our analysis is to check the quality of the metagenomic sequences coming out from the sequencing platform.
+Such data are present in the folder `raw data` and `fastQC` is the program we are going to use the assess their quality. 
+
+Let's create a directory to store the output of the program.
 ```
 mkdir fastqc_r
 ```
 
+Run fastqc.
 ```
-fastqc -o fastqc_r --threads 96 raw_data/M19-81_METAG_R1.fastq raw_data/M19-81_METAG_R2.fastq raw_data/M19-84_METAG_R1.fastq raw_data/M19-84_METAG_R2.fastq raw_data/M19-88_METAG_R1.fastq raw_data/M19-88_METAG_R2.fastq
+fastqc -o fastqc_r --threads 2 raw_data/M19-81_METAG_R1.fastq raw_data/M19-81_METAG_R2.fastq raw_data/M19-84_METAG_R1.fastq raw_data/M19-84_METAG_R2.fastq raw_data/M19-88_METAG_R1.fastq raw_data/M19-88_METAG_R2.fastq
 ```
 
+Now a html report is present for each sample in the folder `fastqc_r`.
+
+##### Trimming
+
+After assessing the quality of our sequences we need to remove sequences with low quality. For that, we are going to use `trimmomatic` to trim our sequences.
 ```
 trimmomatic PE -threads 96 -phred33 -trimlog trim_log.log -summary trim_sum.log raw_data/M19-81_METAG_R1.fastq raw_data/M19-81_METAG_R2.fastq M19-81_f_p.fastq M19-81_f_u.fastq M19-81_r_p.fastq M19-81_r_u.fastq LEADING:10 TRAILING:10 SLIDINGWINDOW:5:20 
 
@@ -103,43 +115,64 @@ trimmomatic PE -threads 96 -phred33 -trimlog trim_log.log -summary trim_sum.log 
 
 trimmomatic PE -threads 96 -phred33 -trimlog trim_log.log -summary trim_sum.log raw_data/M19-88_METAG_R1.fastq raw_data/M19-88_METAG_R2.fastq M19-88_f_p.fastq M19-88_f_u.fastq M19-88_r_p.fastq M19-88_r_u.fastq LEADING:10 TRAILING:10 SLIDINGWINDOW:5:20 
 ```
+##### Assembly
 
+Now that we completed the first quality step of our pipeline. It is time to assemble the reads in contigs using `megahit`.
 ```
-megahit -t 96 -o mega -1 trimm/M19-81_f_p.fastq,trimm/M19-84_f_p.fastq,trimm/M19-88_f_p.fastq -2 trimm/M19-81_r_p.fastq,trimm/M19-84_r_p.fastq,trimm/M19-88_r_p.fastq
+megahit -t 2 -o mega -1 trimm/M19-81_f_p.fastq,trimm/M19-84_f_p.fastq,trimm/M19-88_f_p.fastq -2 trimm/M19-81_r_p.fastq,trimm/M19-84_r_p.fastq,trimm/M19-88_r_p.fastq
 ```
+An output folder called `mega` will automatically created and it will store the results.
 
+##### 2nd Quality Check
+
+Our second quality check in our pipelines it assesing the quality of the assembly using `quast` or, to be more precise, the version for metagenomics `metaquast`.
+Let's run the command.
 ```
 metaquast -t 96 -o quast mega/final.contigs.fa
 ```
 
-```
-bowtie2-build --threads 96 -f ../mega/final.contigs.fa bw
-```
+##### Binning
 
+After ensuring the good quality of the assembly, we now need to prepare for the binning step. In order to do so, we need to map raw reads to our obtained assembly to use the depth information for grouping contigs in bins.
+To do so, we first need to index the assembly using `bowtie2-build`. 
+Let's run the command.
 ```
-bowtie2 -x bw -1 ../raw_data/M19-81_METAG_R1.fastq -2 ../raw_data/M19-81_METAG_R2.fastq -q --phred33  --threads 96 > M19-81.sam 2> M19-81.log
-
-bowtie2 -x bw -1 ../raw_data/M19-84_METAG_R1.fastq -2 ../raw_data/M19-84_METAG_R2.fastq -q --phred33  --threads 96 > M19-84.sam 2> M19-84.log 
-
-bowtie2 -x bw -1 ../raw_data/M19-88_METAG_R1.fastq -2 ../raw_data/M19-88_METAG_R2.fastq -q --phred33  --threads 96 > M19-88.sam 2> M19-88.log
+bowtie2-build --threads 2 -f ../mega/final.contigs.fa bw
 ```
 
+Then we query the indexed assembly with the raw reads.
+Let's run the command.
+```
+bowtie2 -x bw -1 ../raw_data/M19-81_METAG_R1.fastq -2 ../raw_data/M19-81_METAG_R2.fastq -q --phred33  --threads 2 > M19-81.sam 2> M19-81.log
+
+bowtie2 -x bw -1 ../raw_data/M19-84_METAG_R1.fastq -2 ../raw_data/M19-84_METAG_R2.fastq -q --phred33  --threads 2 > M19-84.sam 2> M19-84.log 
+
+bowtie2 -x bw -1 ../raw_data/M19-88_METAG_R1.fastq -2 ../raw_data/M19-88_METAG_R2.fastq -q --phred33  --threads 2 > M19-88.sam 2> M19-88.log
+```
+
+Now, we need to convert the `SAM` output to a sorted and binary file `BAM`. 
+We do this by running `samtools`.
 ```
 samtools sort M19-81.sam -o M19-81.bam && samtools sort M19-84.sam -o M19-84.bam && samtools sort M19-88.sam -o M19-88.bam
 ```
 
+Let's make some cleaning. We move the results from `bowtie2` and `samtools` in a directory called `bowtie`. 
+We create the directory.
 ```
 mkdir bowtie
 ```
-
+We move all the `SAM` and `BAM` file to the directory
 ```
+mv *.sam bowtie/.
 mv *.bam bowtie/.
 ```
 
-
+Finally, we run the binning software `metabat` using as input the assembly and the alignment.
 ```
 runMetaBat.sh mega/final.contigs.fa bowtie/M19-81.bam bowtie/M19-84.bam bowtie/M19-88.bam
 ```
+
+##### Taxonomy Assignment
 
 ```
 conda activate gtdbtk-2.4.0
