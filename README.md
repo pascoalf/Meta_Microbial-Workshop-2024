@@ -172,8 +172,17 @@ Finally, we run the binning software `metabat` using as input the assembly and t
 runMetaBat.sh mega/final.contigs.fa bowtie/M19-81.bam bowtie/M19-84.bam bowtie/M19-88.bam
 ```
 
+##### 3rd Quality Check
+
+Now it is time for the last quality check, where we assess the completeness and contamination of our bins, together with other informative statistcs.
+Let's run the following command.
+```
+checkm lineage_wf -t 2 -x fa metabat/final.contigs.fa.metabat-bins-20240819_221948 checkm
+```
+
 ##### Taxonomy Assignment
 
+After obtaining our bins and having assesed their quality with `checkm`, we will assign the taxonomy using `gtdbt-tk` by runnning the following commands.
 ```
 conda activate gtdbtk-2.4.0
 
@@ -181,10 +190,12 @@ conda env config vars set GTDBTK_DATA_PATH="../../mnt/disk_2TB/release220";
 
 export GTDBTK_DATA_PATH="../../mnt/disk_2TB/release220"
 
-gtdbtk classify_wf -x fa --cpus 96 --genome_dir metabat/final.contigs.fa.metabat-bins-20240819_221948 --out_dir gtdbtk --skip_ani_screen
-
+gtdbtk classify_wf -x fa --cpus 2 --genome_dir metabat/final.contigs.fa.metabat-bins-20240819_221948 --out_dir gtdbtk --skip_ani_screen
 ```
 
+##### Download results
+Output from `checkm`, `gtdbtk`, and `metabat` can be further analyzed in `jupyter notebook` to produce some visualization and retrieve the abundance of the members of the microbial community.
+We first download the files locally on our laptop.
 ```
 scp -i Documents/CIIMAR/LEC_METAG_MICROBIAL/my_ecdsa_key nicola@34.71.198.208:gtdbtk/gtdbtk.bac120.summary.tsv Downloads/.
 
@@ -194,13 +205,39 @@ scp -i Documents/CIIMAR/LEC_METAG_MICROBIAL/my_ecdsa_key nicola@34.71.198.208:me
 
 scp -r -i Documents/CIIMAR/LEC_METAG_MICROBIAL/my_ecdsa_key nicola@34.71.198.208:metabat/final.contigs.fa.metabat-bins-20240819_221948 Downloads/.
 ```
+Then, we run `jupyter notebook`.
 
+##### Functional Annotation
+
+After exploring the previous results, focused on the MAG reconstruction and taxonomy composition of the community. We can investigate the functional potential of our putative organisms.
+
+First, we predict the genes present in our MAGs using `prodigal`.
+We create a folder to store our results called `prodig` with the following command.
 ```
-exec_annotation --profile=../../mnt/disk_2TB/kofam_scan-master/profiles --ko-list=../../mnt/disk_2TB/kofam_scan-master/ko_list --cpu=96 -o kofam/bin.1.ko.txt prodig/bin1.proteins.faa && exec_annotation --profile=../../mnt/disk_2TB/kofam_scan-master/profiles --ko-list=../../mnt/disk_2TB/kofam_scan-master/ko_list --cpu=96 -o kofam/bin.6.ko.txt prodig/bin6.proteins.faa && exec_annotation --profile=../../mnt/disk_2TB/kofam_scan-master/profiles --ko-list=../../mnt/disk_2TB/kofam_scan-master/ko_list --cpu=96 -o kofam/bin.12.ko.txt prodig/bin12.proteins.faa
+mkdir prodig
 ```
 
+We then run `prodigal`.
+```
+prodigal -i metabat/final.contigs.fa.metabat-bins-20240819_221948/bin.1.fa -o prodig/bin.1.genes -a prodig/bin1.proteins.faa
+prodigal -i metabat/final.contigs.fa.metabat-bins-20240819_221948/bin.6.fa -o prodig/bin.6.genes -a prodig/bin6.proteins.faa
+prodigal -i metabat/final.contigs.fa.metabat-bins-20240819_221948/bin.12.fa -o prodig/bin.12.genes -a prodig/bin12.proteins.faa
+```
+
+After obtaining the aminoacidic sequences of our predicted genes, we can query the `KEGG` database using `kofamscan`.
+Let's run the following command.
+```
+exec_annotation --profile=../../mnt/disk_2TB/kofam_scan-master/profiles --ko-list=../../mnt/disk_2TB/kofam_scan-master/ko_list --cpu=96 -o kofam/bin.1.ko.txt prodig/bin1.proteins.faa
+exec_annotation --profile=../../mnt/disk_2TB/kofam_scan-master/profiles --ko-list=../../mnt/disk_2TB/kofam_scan-master/ko_list --cpu=96 -o kofam/bin.6.ko.txt prodig/bin6.proteins.faa
+exec_annotation --profile=../../mnt/disk_2TB/kofam_scan-master/profiles --ko-list=../../mnt/disk_2TB/kofam_scan-master/ko_list --cpu=96 -o kofam/bin.12.ko.txt prodig/bin12.proteins.faa
+```
+
+Now, we want to select only the matches above the pre-computed threshold. We do that by using the powerful utilities provided by `bash`. Namely, `cat` and `awk`.
+Let's run the following commands.
 ```
 cat bin.6.ko.txt | t='*' awk '$1==ENVIRON["t"]{print $2,$3}' > bin.6.mapper.txt
 cat bin.1.ko.txt | t='*' awk '$1==ENVIRON["t"]{print $2, $3}' > bin.1.mapper.txt
 cat bin.12.ko.txt | t='*' awk '$1==ENVIRON["t"]{print $2, $3}' > bin.12.mapper.txt
 ```
+
+Now we can use the online tool [KEGG Mapper Reconstruct](https://www.genome.jp/kegg/mapper/reconstruct.html) to map the genes to KEGG database.
