@@ -68,12 +68,12 @@ tmux ls
 
 ## Python in microbial ecology studies
 ## Metabarcoding (amplicon sequencing) analysis workflow
-[LINK2](url)
+[LINK2](/Metbarcoding-lectures)
 
 # Second Day
 ## Exploring Online Resources and Repositories I
 ## Insights on data visualization and analysis
-[LINK3](url)
+[LINK3](/Data-visualization)
 
 ## Metagenomics (shotgun sequencing) analysis workflow
 ## Phylogenetic trees from high-throughput sequence data
