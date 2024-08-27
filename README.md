@@ -64,12 +64,17 @@ tmux ls
 ## Next-generation sequencing technologies and data generation
 ## Sampling protocols and standardization
 ## R tools for microbial ecology studies
+[LINK1](url)
+
 ## Python in microbial ecology studies
 ## Metabarcoding (amplicon sequencing) analysis workflow
+[LINK2](url)
 
 # Second Day
 ## Exploring Online Resources and Repositories I
 ## Insights on data visualization and analysis
+[LINK3](url)
+
 ## Metagenomics (shotgun sequencing) analysis workflow
 ## Phylogenetic trees from high-throughput sequence data
 ## Exploring Online Resources and Repositories II
@@ -78,6 +83,8 @@ tmux ls
 # Third Day
 ## Hands-on Metabarcoding</summary>
 ### From raw data to community structure insights
+[LINK4](url)
+
 ## Hands-on Metagenomics</summary>
 ### From raw data to taxonomic and functional insights 
 
