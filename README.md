@@ -86,9 +86,9 @@ tmux ls
 [Folder with lecture content]([url](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/Hands-on-Metabarcoding/Downstream))
 
 ## Hands-on Metagenomics</summary>
-### From raw data to taxonomic and functional insights 
+## From raw data to taxonomic and functional insights 
 
-##### 1st Quality Check
+### 1st Quality Check
 
 The first step of our analysis is to check the quality of the metagenomic sequences coming out from the sequencing platform.
 Such data are present in the folder `raw data` and `fastQC` is the program we are going to use the assess their quality. 
@@ -105,7 +105,7 @@ fastqc -o fastqc_r --threads 2 raw_data/M19-81_METAG_R1.fastq raw_data/M19-81_ME
 
 Now a html report is present for each sample in the folder `fastqc_r`.
 
-##### Trimming
+### Trimming
 
 After assessing the quality of our sequences we need to remove sequences with low quality. For that, we are going to use `trimmomatic` to trim our sequences.
 ```
@@ -115,7 +115,7 @@ trimmomatic PE -threads 96 -phred33 -trimlog trim_log.log -summary trim_sum.log 
 
 trimmomatic PE -threads 96 -phred33 -trimlog trim_log.log -summary trim_sum.log raw_data/M19-88_METAG_R1.fastq raw_data/M19-88_METAG_R2.fastq M19-88_f_p.fastq M19-88_f_u.fastq M19-88_r_p.fastq M19-88_r_u.fastq LEADING:10 TRAILING:10 SLIDINGWINDOW:5:20 
 ```
-##### Assembly
+### Assembly
 
 Now that we completed the first quality step of our pipeline. It is time to assemble the reads in contigs using `megahit`.
 ```
@@ -123,7 +123,7 @@ megahit -t 2 -o mega -1 trimm/M19-81_f_p.fastq,trimm/M19-84_f_p.fastq,trimm/M19-
 ```
 An output folder called `mega` will automatically created and it will store the results.
 
-##### 2nd Quality Check
+### 2nd Quality Check
 
 Our second quality check in our pipelines it assesing the quality of the assembly using `quast` or, to be more precise, the version for metagenomics `metaquast`.
 Let's run the command.
@@ -131,7 +131,7 @@ Let's run the command.
 metaquast -t 96 -o quast mega/final.contigs.fa
 ```
 
-##### Binning
+### Binning
 
 After ensuring the good quality of the assembly, we now need to prepare for the binning step. In order to do so, we need to map raw reads to our obtained assembly to use the depth information for grouping contigs in bins.
 To do so, we first need to index the assembly using `bowtie2-build`. 
