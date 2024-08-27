@@ -167,7 +167,7 @@ exec_annotation --profile=../../mnt/disk_2TB/kofam_scan-master/profiles --ko-lis
 ```
 
 ```
-cat bin.6.ko.txt | t='*' awk '$1!=ENVIRON["t"]{print $1, $2}' > bin.6.mapper.txt
-cat bin.1.ko.txt | t='*' awk '$1!=ENVIRON["t"]{print $1, $2}' > bin.1.mapper.txt
-cat bin.12.ko.txt | t='*' awk '$1!=ENVIRON["t"]{print $1, $2}' > bin.12.mapper.txt
+cat bin.6.ko.txt | t='*' awk '$1==ENVIRON["t"]{print $2,$3}' > bin.6.mapper.txt
+cat bin.1.ko.txt | t='*' awk '$1==ENVIRON["t"]{print $2, $3}' > bin.1.mapper.txt
+cat bin.12.ko.txt | t='*' awk '$1==ENVIRON["t"]{print $2, $3}' > bin.12.mapper.txt
 ```
