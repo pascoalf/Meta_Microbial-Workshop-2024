@@ -242,7 +242,8 @@ cat bin.12.ko.txt | t='*' awk '$1==ENVIRON["t"]{print $2, $3}' > bin.12.mapper.t
 
 Now we can use the online tool [KEGG Mapper Reconstruct](https://www.genome.jp/kegg/mapper/reconstruct.html) to map the genes to KEGG database.
 
-We will now use antiSMASH for the identification and annotation of biosynthetic gene clusters. antiSMASH can be used by a public [web version] (https://antismash.secondarymetabolites.org/#!/start) or using a local installation, as we will perform here.
+##### Functional Annotation - Biosynthetic gene clusters
+We will now use antiSMASH for the identification and annotation of biosynthetic gene clusters. antiSMASH can be used by a public [web version(https://antismash.secondarymetabolites.org/#!/start) or using a local installation, as we will perform here.
 As an example, we will run antiSMASH in the recovered high-quality MAG bin.12. 
 ```
 conda activate antismash
@@ -263,6 +264,7 @@ conda activate bigscape
 ```
 ```
 cd /mnt/disk_2TB/BiG-SCAPE-1.1.5/
+```
 ```
 python bigscape.py -i  /home/adriana/arctic_bin12_antismash_output --mix --mibig --include_singletons --cutoffs 0.3 0.7 -o /home/adriana/arctic_bin12_bigscape_output
 ```
