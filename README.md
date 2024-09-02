@@ -241,3 +241,36 @@ cat bin.12.ko.txt | t='*' awk '$1==ENVIRON["t"]{print $2, $3}' > bin.12.mapper.t
 ```
 
 Now we can use the online tool [KEGG Mapper Reconstruct](https://www.genome.jp/kegg/mapper/reconstruct.html) to map the genes to KEGG database.
+
+##### Functional Annotation - Biosynthetic gene clusters
+We will now use antiSMASH for the identification and annotation of biosynthetic gene clusters. antiSMASH can be used by a public [web version(https://antismash.secondarymetabolites.org/#!/start) or using a local installation, as we will perform here.
+As an example, we will run antiSMASH in the recovered high-quality MAG bin.12. 
+```
+conda activate antismash
+```
+```
+/mnt/disk_2TB/anaconda3/bin/./antismash metabat/final.contigs.fa.metabat-bins-20240819_221948/bin.12.fa --cb-general --cb-subclusters --cb-knownclusters --genefinding-tool prodigal --output-dir arctic_bin12_antismash_output &
+```
+
+After finishing we can download the antiSMASH output folder, which includes a detailed HTML output report and the genbank files of identified BGCs.
+```
+scp -i my_ecdsa_key -r adriana@34.71.198.208:/home/adriana/arctic_bin12_antismash_output/ .
+```
+
+We can complement the antiSMASH analysis by running [BiG-SCAPE](https://github.com/medema-group/BiG-SCAPE) (Biosynthetic Gene Similarity Clustering and Prospecting Engine), which builds sequence similarity networks (SSNs) of BGCs and groups them into Gene Cluster Families (GCFs). With this we can visualize how closely related the recovered BGCs are from each other and from BGCs that codify for characterized compounds in the [MIBiG] (https://mibig.secondarymetabolites.org/) database. 
+To run BiG-SCAPE we use an input the output genbank files from the antiSMASH analysis. 
+```
+conda activate bigscape
+```
+```
+cd /mnt/disk_2TB/BiG-SCAPE-1.1.5/
+```
+```
+python bigscape.py -i  /home/adriana/arctic_bin12_antismash_output --mix --mibig --include_singletons --cutoffs 0.3 0.7 -o /home/adriana/arctic_bin12_bigscape_output
+```
+
+After finishing we can download the BiG-SCAPE output folder, which includes a detailed HTML output report and the network files. 
+```
+scp -i my_ecdsa_key -r adriana@34.71.198.208:/home/adriana/arctic_bin12_bigscape_output/ .
+```
+
