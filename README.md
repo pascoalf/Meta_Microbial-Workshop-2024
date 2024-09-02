@@ -83,7 +83,7 @@ tmux ls
 # Third Day
 ## Hands-on Metabarcoding</summary>
 ### From raw data to community structure insights
-[Folder with lecture content]([/Downstream](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/Hands-on-Metabarcoding/Downstream)))
+[Folder with lecture content]([/Downstream](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/Hands-on-Metabarcoding/Downstream))
 
 ## Hands-on Metagenomics</summary>
 ## From raw data to taxonomic and functional insights 
