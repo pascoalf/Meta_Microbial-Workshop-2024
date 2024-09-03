@@ -74,7 +74,7 @@ tmux ls
 
 # Second Day
 ## Exploring Online Resources and Repositories I
-[Folder with lecture content]([/Practical_Example_Silva_NGS](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/Practical_Example_Silva_NGS))
+[Folder with lecture content](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/Practical_Example_Silva_NGS)
 ## Insights on data visualization and analysis
 [Folder with lecture content]([/Data-visualization](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/Data-visualization))
 
