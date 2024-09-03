@@ -63,10 +63,12 @@ tmux ls
 # First Day
 ## Next-generation sequencing technologies and data generation
 ## Sampling protocols and standardization
+[Folder with lecture content](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/Sampling_Protocols_and_Standardization)
 ## R tools for microbial ecology studies
 [Folder with lecture content](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/R-tools-for-microbial-ecology)
 
 ## Python in microbial ecology studies
+[Folder with lecture content](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/Python-microbial-ecology)
 ## Metabarcoding (amplicon sequencing) analysis workflow
 [Folder with lecture content]([/Metbarcoding-lectures](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/Metabarcoding-lectures))
 
