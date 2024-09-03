@@ -61,7 +61,7 @@ tmux ls
 ```
 
 # First Day
-[Welcome Session](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/Welcome Session.pdf)
+[Welcome Session](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/Welcome_Session.pdf)
 ## Next-generation sequencing technologies and data generation
 ## Sampling protocols and standardization
 [Folder with lecture content](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/Sampling_Protocols_and_Standardization)
