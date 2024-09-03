@@ -56,15 +56,13 @@ ASVs_full %>%
         strip.background = element_blank(), strip.text = element_text(size = 14)) + 
   labs(y = "Relative abundance (%)")
 
-# Use point and line plot instead of bar plot, divide grids by Experiment
+# Use point plot instead of bar plot, divide grids by Experiment
 ASVs_full %>% 
   group_by(Sample, Experiment, Treatment, Concentration, Replicate, Kingdom) %>% 
   summarise(RelativeAbundance = sum(RelativeAbundance)) %>% 
   ggplot(aes(x = Treatment, y = RelativeAbundance, col = Kingdom)) +
   # add a layer with points
   ____(size = 2.5) +
-  # add a layer with lines
-  ____(aes(group = paste(Replicate, Kingdom)))+
   geom_vline(xintercept = 1.5, lty = "dashed") +
   facet_grid(~____) + 
   theme_bw() +
@@ -116,11 +114,10 @@ ____ +
        fill = "Top phyla") + 
   scale_fill_manual(values = c(qualitative_colors[1:5], "grey80"))
 
-# Repeat the same plot as point and line plot instead
+# Repeat the same plot as point plot instead
 ____ %>% 
   ggplot(aes(x = Treatment, y = RelativeAbundance, col = topPhyla)) + 
-  geom_point() +
-  geom_line(aes(group = paste(Replicate, topPhyla))) + 
+  geom_jitter(width = 0.1, size = 3) +
   geom_vline(xintercept = 1.5, lty = "dashed") +
   facet_grid(~Experiment) + 
   theme_bw() +
@@ -161,8 +158,6 @@ ____ %>%
   ____(aes(Treatment, RelativeAbundance, col = topGenus)) +
   # add point layer
   ____ +
-  # add line layer
-  ____(aes(group = paste(Replicate, topGenus))) + 
   # add facet grid
   ____(~Experiment) +
   # use theme black and white
@@ -180,6 +175,24 @@ ____ %>%
   scale_color_manual(values = c(qualitative_colors[1:5], "grey41","grey80"))
 
 ## Closer look at Stenotrophomonas
+
+# 
+top_genus_data %>% 
+  mutate(isSteno = ifelse(Genus == "Stenotrophomonas", "Stenotrophomonas", "Other")) %>% 
+  ggplot(aes(Treatment, RelativeAbundance, col = isSteno)) +
+  ____(width = 0.1) +
+  facet_grid(~Experiment) +
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 12, angle = 90),
+        axis.text.y = element_text(size = 12),
+        axis.title = element_text(size = 14),
+        legend.position = "top",
+        legend.text = element_text(size = 12),
+        legend.title = element_text(size= 12),
+        strip.background = element_blank(),
+        strip.text = element_text(size = 14)) +
+  labs(y = "Relative abundance (%)", color = "Genus: ") + 
+  scale_color_manual(values = c("grey80", "red", "grey20"))
 
 # Calculate relative abundance and filter for the Stenotrophomonas genus
 # Store the result as steno_data

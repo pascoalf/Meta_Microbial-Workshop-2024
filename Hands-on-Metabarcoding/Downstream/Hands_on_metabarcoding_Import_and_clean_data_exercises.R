@@ -27,8 +27,8 @@ set.seed(123)
 
 ## Import and clean data 
 
-# load ASV table
-load("data/dada2_output")
+# load DADA2 results
+load("/mnt/disk_2TB/Rmaterials/data/dada2_output")
 
 # check variables stored in the environment
 ls()
@@ -120,7 +120,7 @@ ASV_combined_clean %>% filter(____(Phylum))
 ## Metadata 
 
 # Load metadata
-metadata <- read_xlsx("./data/FKT_exp_amplicon_map.xlsx")
+metadata <- read_xlsx("/mnt/disk_2TB/Rmaterials/data/FKT_exp_amplicon_map.xlsx")
 
 # see first five rows of metadata
 head(____, n = 5)

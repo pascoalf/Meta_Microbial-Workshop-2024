@@ -50,7 +50,6 @@ diversity_summary <- ASVs_full %>%
 colnames(____)
 View(____)
 
-
 ## Overview the summary with ggplot2
 
 # Using the diversity_summary data frame and ggplot2, plot species richness:
@@ -65,28 +64,30 @@ ggplot(aes(x = ____, y = ____)) +
 
 ## Reflect the experiment in the plot (1)
 
+# Make a Control vs Treatment column
+diversity_summary <- diversity_summary %>% 
+  mutate(isControl = ifelse(Treatment == "CTR", "Control", "Cd treatment"))
+
 # Plot species richness as a function of Concentration
 diversity_summary %>% 
   ggplot(aes(x = ____, y = ____, 
              col = ____)) + 
   geom_point(size = 3) + 
-  geom_line(aes(group = Replicate)) + 
   facet_grid(~____) + 
-  scale_x_log10() + 
+  scale_x_log10() +
+  scale_color_manual(values = c("#009E73", "grey40")) + 
   theme_classic() + 
-  scale_color_manual(values = qualitative_colors) + 
   labs(y = "Species richness",
        x = "Concentration (\U00B5M) in Log10 scale")
 
 # Repeat the previous plot, using Treatment instead of Experiment
 diversity_summary %>% 
   ggplot(aes(x = ____, y = speciesRichness, 
-             col = Replicate)) + 
-  geom_point(size = 6) + 
-  geom_line(aes(group = Replicate), lwd = 2) + 
+             col = isControl)) + 
+  geom_point(size = 4) + 
   facet_grid(~Experiment) + 
+  scale_color_manual(values = c("#009E73", "grey40")) + 
   theme_classic() + 
-  scale_color_manual(values = qualitative_colors) + 
   labs(y = "Species richness",
        x = "Concentration (\U00B5M)")
 
@@ -95,12 +96,11 @@ diversity_summary %>%
 # Save the first part of your plot as plot_1
 ____ <- diversity_summary %>% 
   ggplot(aes(x = Treatment, y = speciesRichness, 
-             col = Replicate)) + 
+             col = isControl)) + 
   geom_point(size = ____) + 
-  geom_line(aes(group = Replicate), lwd = ____) + 
   facet_grid(~Experiment) + 
+  scale_color_manual(values = c("#009E73", "grey40")) + 
   theme_classic() + 
-  scale_color_manual(values = qualitative_colors) + 
   labs(y = "Species richness",
        x = "Concentration (\U00B5M)")
 
@@ -121,12 +121,11 @@ ____ +
 # Make plot_shannon
 ____ <- diversity_summary %>% 
   ggplot(aes(x = Treatment, y = ____, 
-             col = Replicate)) + 
-  geom_point(size = 6) + 
-  geom_line(aes(group = Replicate), lwd = 2) + 
+             col = isControl)) + 
+  geom_point(size = 4) + 
   facet_grid(~Experiment) + 
   theme_classic() + 
-  scale_color_manual(values = qualitative_colors) + 
+  scale_color_manual(values = c("#009E73", "grey40")) +
   labs(y = "Shannon",
        x = "Concentration (\U00B5M)")
 
@@ -151,11 +150,10 @@ Sed0037_experiment <- diversity_summary %>% filter(____)
 ____ <- Sed0037_experiment %>% 
   ggplot(aes(x = Treatment, y = ____, 
              col = Replicate)) + 
-  geom_point(size = 6) + 
-  geom_line(aes(group = Replicate), lwd = 2) + 
+  geom_point(size = 4) + 
   geom_hline(yintercept = c(550, 650), lty = "dashed") + 
   theme_classic() + 
-  scale_color_manual(values = qualitative_colors) + 
+  scale_color_manual(values = c("#009E73", "grey40")) +
   labs(y = "Species richness",
        x = "Concentration (\U00B5M)")
 
@@ -163,10 +161,9 @@ ____ <- Sed0037_experiment %>%
 Sed037_sh_plot <- Sed0037_experiment %>% 
   ggplot(aes(x = Treatment, y = shannon, 
              col = Replicate)) + 
-  geom_point(size = 3) + 
-  geom_line(aes(group = Replicate), lwd = 1) + 
+  geom_point(size = 3) +
+  scale_color_manual(values = c("#009E73", "grey40")) + 
   theme_classic() + 
-  scale_color_manual(values = qualitative_colors) + 
   labs(y = "Shannon",
        x = "Concentration (\U00B5M)")
 
@@ -209,22 +206,17 @@ Sed0037_experiment %>%
   group_by(Treatment) %>% 
   ____(shannon)
 
-## One-way repeated measures ANOVA
+## One-way ANOVA
 
-# Perform the ANOVA test and store in shannon_anova
-____ <- Sed0037_experiment %>% 
+# Perform the ANOVA test
+Sed0037_experiment %>% 
   ungroup() %>%  
-  ____(dv = shannon,
-       wid = Replicate, 
-       within = Treatment) 
-# See results
-get_anova_table(____)
+  ____(shannon ~ Treatment) 
 
-# Do a pairwise t-test
+# Do Tukey test (post-hoc)
 Sed0037_experiment %>% 
   ungroup() %>% 
-  ____(shannon ~ Treatment, paired = TRUE, 
-       p.adjust.method = ____)
+  ____(shannon ~ Treatment, paired = TRUE)
 
 # Identify significant tests
 ptt %>% 
