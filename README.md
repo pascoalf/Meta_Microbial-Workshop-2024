@@ -71,7 +71,7 @@ tmux ls
 ## Python in microbial ecology studies
 [Folder with lecture content](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/Python-microbial-ecology)
 ## Metabarcoding (amplicon sequencing) analysis workflow
-[Folder with lecture content]([/Metbarcoding-lectures](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/Metabarcoding-lectures))
+[Folder with lecture content](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/Metabarcoding-lectures)
 
 # Second Day
 ## Exploring Online Resources and Repositories I
