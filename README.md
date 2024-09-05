@@ -86,6 +86,7 @@ tmux ls
 ## Exploring Online Resources and Repositories II
 [Folder with lecture content](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/Meta_Microbial_online_resources)
 ## Alternative statistical and data analyses
+[Folder with lecture content](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/Meta_Microbial_Networks)
 
 # Third Day
 ## Hands-on Metabarcoding</summary>
