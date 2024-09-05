@@ -249,6 +249,24 @@ cat bin.12.ko.txt | t='*' awk '$1==ENVIRON["t"]{print $2, $3}' > bin.12.mapper.t
 
 Now we can use the online tool [KEGG Mapper Reconstruct](https://www.genome.jp/kegg/mapper/reconstruct.html) to map the genes to KEGG database.
 
+##### KEGG Decoder
+It is also possible to obtain a general overview of the completeness of the pathways present in our MAGs and the functional redundancy in the community using `KEGG Decoder`. This tool however, have some limitation and therefore need to be used carefully. 
+
+We first prepare the output from KOFAMSCAN by extracting only the significant matches and adding the name of our MAG at the beginning of every contig (this is required by KEGG Decoder).
+```
+cat bin.1.ko.txt | t='*' awk '$1==ENVIRON["t"]{print $2, $3}' | awk '{print "bin1_"$1,$2}'> sign.1.ko.txt
+cat bin.6.ko.txt | t='*' awk '$1==ENVIRON["t"]{print $2, $3}' | awk '{print "bin6_"$1,$2}'> sign.6.ko.txt
+cat bin.12.ko.txt | t='*' awk '$1==ENVIRON["t"]{print $2, $3}' | awk '{print "bin12_"$1,$2}'> sign.12.ko.txt
+```
+We then concatenate the files together in a singolar file that will be our input for KEGG Decoder.
+```
+cat sign.1.ko.txt sign.6.ko.txt sign.12.ko.txt > sign.3g.ko.txt
+```
+Finally, we execute KEGG Decoder.
+```
+KEGG-decoder --input sign.3g.ko.txt --output map.3g.list --vizoption static
+```
+
 ##### Functional Annotation - Biosynthetic gene clusters
 We will now use antiSMASH for the identification and annotation of biosynthetic gene clusters. antiSMASH can be used by a public [web version(https://antismash.secondarymetabolites.org/#!/start) or using a local installation, as we will perform here.
 As an example, we will run antiSMASH in the recovered high-quality MAG bin.12. 
