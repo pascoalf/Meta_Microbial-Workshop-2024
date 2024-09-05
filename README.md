@@ -84,6 +84,7 @@ tmux ls
 ## Phylogenetic trees from high-throughput sequence data
 [Folder with lecture content](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/Phylogenetic_trees)
 ## Exploring Online Resources and Repositories II
+[Folder with lecture content](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/Meta_Microbial_online_resources)
 ## Alternative statistical and data analyses
 
 # Third Day
