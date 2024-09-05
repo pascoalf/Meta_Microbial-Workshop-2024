@@ -80,6 +80,7 @@ tmux ls
 [Folder with lecture content](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/Data-visualization)
 
 ## Metagenomics (shotgun sequencing) analysis workflow
+[Folder with lecture content](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/Metagenomic_analysis_workflow)
 ## Phylogenetic trees from high-throughput sequence data
 ## Exploring Online Resources and Repositories II
 ## Alternative statistical and data analyses
