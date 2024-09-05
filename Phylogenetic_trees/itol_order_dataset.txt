@@ -1,0 +1,130 @@
+DATASET_COLORSTRIP
+#lines starting with a hash are comments and ignored during parsing
+#select the separator which is used to delimit the data below (TAB,SPACE or COMMA).This separator must be used throught this file (except in the SEPARATOR line, which uses space).
+
+#SEPARATOR TAB
+#SEPARATOR SPACE
+SEPARATOR COMMA
+
+#label is used in the legend table (can be changed later)
+DATASET_LABEL, Orders_cyano
+#dataset color (can be changed later)
+
+#optional settings
+
+#all other optional settings can be set or changed later in the web interface (under 'Datasets' tab)
+
+#maximum width
+
+
+#left margin, used to increase/decrease the spacing to the next dataset. Can be negative, causing datasets to overlap.
+
+#border width; if set above 0, a black border of specified width (in pixels) will be drawn around the color strip 
+
+#show internal values; if set, values associated to internal nodes will be displayed even if these nodes are not collapsed. It could cause overlapping in the dataset display.
+
+#In colored strip charts, each ID is associated to a color. Color can be specified in hexadecimal, RGB or RGBA notation
+#Internal tree nodes can be specified using IDs directly, or using the 'last common ancestor' method described in iTOL help pages
+#Actual data follows after the "DATA" keyword
+
+DATA
+CAR20_Bin_12-contigs,#eff2f3
+CAR29_Bin_2-contigs,#eff2f3
+PC5_Bin_73_1-contigs,#eff2f3
+CAR29_Bin_87-contigs,#eff2f3
+CAR20_Bin_74-contigs,#eff2f3
+PC5_Bin_46_1-contigs,#d7dcdd
+PC5_Bin_74_1-contigs,#d7dcdd
+PC5_Bin_46_2-contigs,#d7dcdd
+SM1_Bin_60_2-contigs,#d7dcdd
+SM1_Bin_95-contigs,#d7dcdd
+PC5_Bin_26_1-contigs,#d7dcdd
+CAR21_Bin_11_1-contigs,#d7dcdd
+CAR32_Bin_37-contigs,#d7dcdd
+PC5_Bin_26_2-contigs,#d7dcdd
+SM1_Bin_60_1-contigs,#d7dcdd
+SM1_Bin_60_3-contigs,#d7dcdd
+PC5_Bin_85-contigs,#d7dcdd
+PC5_Bin_69_1-contigs,#d7dcdd
+CAR21_Bin_40-contigs,#aeb6b8
+CAR21_Bin_37_1-contigs,#aeb6b8
+CAR32_Bin_35_1-contigs,#aeb6b8
+CAR32_Bin_67_1-contigs,#aeb6b8
+SM1_Bin_3-contigs,#7b868a
+PC5_Bin_28-contigs,#7b868a
+SM1_Bin_10-contigs,#7b868a
+SM15_Bin_77_2-contigs,#7b868a
+CAR19_Bin_64_1-contigs,#7b868a
+SM23_Bin_16-contigs,#7b868a
+SM23_Bin_25-contigs,#7b868a
+SM10_Bin_58-contigs,#7b868a
+SM1_Bin_7-contigs,#7b868a
+CAR32_Bin_49-contigs,#7b868a
+PC5_Bin_53_1-contigs,#7b868a
+PC5_Bin_72_1-contigs,#7b868a
+itol_header,
+M8_Bin_101-contigs,#525e61
+SM32_Bin_27_2-contigs,#525e61
+M4_Bin_16_1-contigs,#525e61
+M1_Bin_103_1-contigs,#525e61
+M8_Bin_53-contigs,#525e61
+PC4_Bin_72-contigs,#525e61
+PC1_Bin_125-contigs,#525e61
+M8_Bin_129-contigs,#525e61
+PC1_Bin_3-contigs,#525e61
+PC4_Bin_38-contigs,#525e61
+SM10_Bin_110_1-contigs,#525e61
+M1_Bin_15_1-contigs,#525e61
+PC1_Bin_54_1-contigs,#525e61
+SM25_Bin_115-contigs,#525e61
+PC4_Bin_122_1-contigs,#525e61
+SM19_Bin_22-contigs,#525e61
+SM19_Bin_23-contigs,#525e61
+SM1_Bin_29-contigs,#525e61
+PC5_Bin_54-contigs,#525e61
+SM18_Bin_67_1-contigs,#525e61
+CAR21_Bin_71_1-contigs,#525e61
+SM19_Bin_33-contigs,#525e61
+SM14_Bin_55-contigs,#525e61
+SM18_Bin_90-contigs,#525e61
+SM14_Bin_63_1-contigs,#525e61
+SM18_Bin_33_1-contigs,#525e61
+SM19_Bin_4-contigs,#525e61
+SM14_Bin_51_1-contigs,#525e61
+SM1_Bin_123_2-contigs,#525e61
+SM1_Bin_6_1-contigs,#525e61
+M4_Bin_47_1-contigs,#3b4446
+SM10_Bin_2_1-contigs,#3b4446
+SM10_Bin_61_1-contigs,#3b4446
+SM1_Bin_98_1-contigs,#3b4446
+SM1_Bin_41_1-contigs,#3b4446
+CAR32_Bin_38_1-contigs,#3b4446
+M4_Bin_37_1-contigs,#3b4446
+M4_Bin_33_1-contigs,#3b4446
+M4_Bin_2_1-contigs,#3b4446
+SM18_Bin_64-contigs,#166a8f
+CAR29_Bin_55_1-contigs,#166a8f
+CAR32_Bin_25_1-contigs,#166a8f
+SM32_Bin_18_1-contigs,#166a8f
+SM32_Bin_43_1-contigs,#166a8f
+M1_Bin_79_1-contigs,#166a8f
+M1_Bin_47_1-contigs,#166a8f
+SM10_Bin_10-contigs,#166a8f
+SM10_Bin_93_1-contigs,#166a8f
+SM10_Bin_91_1-contigs,#166a8f
+SM10_Bin_91_2-contigs,#166a8f
+SM10_Bin_14_1-contigs,#166a8f
+CAR20_Bin_1_1-contigs,#166a8f
+M8_Bin_134-contigs,#166a8f
+CAR21_Bin_44-contigs,#166a8f
+SM15_Bin_77_1-contigs,#166a8f
+CAR21_Bin_71_2-contigs,#166a8f
+SM23_Bin_63-contigs,#166a8f
+CAR21_Bin_89_1-contigs,#166a8f
+SM15_Bin_70_1-contigs,#166a8f
+M8_Bin_33-contigs,#2facb2
+SM25_Bin_41-contigs,#7b868a
+CAR29_Bin_15-contigs,#2dbe60
+
+
+
