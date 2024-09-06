@@ -122,7 +122,7 @@ Now a html report is present for each sample in the folder `fastqc_r`.
 
 After assessing the quality of our sequences we need to remove sequences with low quality. For that, we are going to use `trimmomatic` to trim our sequences.
 ```
-trimmomatic PE -threads 96 -phred33 -trimlog trim_log.log -summary trim_sum.log ../nicola/raw_data/M19-81_METAG_R1.fastq ../nicola/raw_data/M19-81_METAG_R2.fastq ../nicola/M19-81_f_p.fastq M19-81_f_u.fastq M19-81_r_p.fastq M19-81_r_u.fastq LEADING:10 TRAILING:10 SLIDINGWINDOW:5:20 
+trimmomatic PE -threads 96 -phred33 -trimlog trim_log.log -summary trim_sum.log ../nicola/raw_data/M19-81_METAG_R1.fastq ../nicola/raw_data/M19-81_METAG_R2.fastq M19-81_f_p.fastq M19-81_f_u.fastq M19-81_r_p.fastq M19-81_r_u.fastq LEADING:10 TRAILING:10 SLIDINGWINDOW:5:20 
 ```
 ```
 trimmomatic PE -threads 96 -phred33 -trimlog trim_log.log -summary trim_sum.log ../nicola/raw_data/M19-84_METAG_R1.fastq ../nicola/raw_data/M19-84_METAG_R2.fastq M19-84_f_p.fastq M19-84_f_u.fastq M19-84_r_p.fastq M19-84_r_u.fastq LEADING:10 TRAILING:10 SLIDINGWINDOW:5:20 
