@@ -143,7 +143,7 @@ mv *fastq trimm/.
 ```
 
 ```
-megahit -t 2 -o mega -1 trimm/M19-81_f_p.fastq,trimm/M19-84_f_p.fastq,trimm/M19-88_f_p.fastq -2 trimm/M19-81_r_p.fastq,trimm/M19-84_r_p.fastq,trimm/M19-88_r_p.fastq
+megahit -t 2 -o mega -1 ../nicola/trimm/M19-81_f_p.fastq,../nicola/trimm/M19-84_f_p.fastq,../nicola/trimm/M19-88_f_p.fastq -2 ../nicola/trimm/M19-81_r_p.fastq,../nicola/trimm/M19-84_r_p.fastq,../nicola/trimm/M19-88_r_p.fastq
 ```
 An output folder called `mega` will automatically created and it will store the results.
 
