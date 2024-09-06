@@ -108,8 +108,13 @@ mkdir fastqc_r
 
 Run fastqc.
 ```
-fastqc -o fastqc_r --threads 2 raw_data/M19-81_METAG_R1.fastq raw_data/M19-81_METAG_R2.fastq raw_data/M19-84_METAG_R1.fastq raw_data/M19-84_METAG_R2.fastq raw_data/M19-88_METAG_R1.fastq raw_data/M19-88_METAG_R2.fastq
+fastqc -o fastqc_r --threads 2 ../nicola/raw_data/M19-81_METAG_R1.fastq ../nicola/raw_data/M19-81_METAG_R2.fastq ../nicola/raw_data/M19-84_METAG_R1.fastq ../nicola/raw_data/M19-84_METAG_R2.fastq ../nicola/raw_data/M19-88_METAG_R1.fastq ../nicola/raw_data/M19-88_METAG_R2.fastq
 ```
+Download results
+```
+scp -r -i my_ecdsa_key.txt alunoNUMBER@34.71.198.208:fastqc_r .
+```
+
 
 Now a html report is present for each sample in the folder `fastqc_r`.
 
