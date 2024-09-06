@@ -201,7 +201,7 @@ runMetaBat.sh mega/final.contigs.fa bowtie/M19-81.bam bowtie/M19-84.bam bowtie/M
 Now it is time for the last quality check, where we assess the completeness and contamination of our bins, together with other informative statistcs.
 Let's run the following command.
 ```
-checkm lineage_wf -t 2 -x fa ../nicola/metabat/final.contigs.fa.metabat-bins-20240819_221948 checkm
+checkm lineage_wf -t 5 -x fa ../nicola/metabat/final.contigs.fa.metabat-bins-20240819_221948 checkm
 ```
 
 ##### Taxonomy Assignment
