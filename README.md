@@ -29,7 +29,7 @@ In order to allow the participants to run the analysis, a server has been provid
 To access the machine, please do:
 
 + download the "my_ecdsa_key" file 
-+ access using `ssh -i my_ecdsa_key alunoNUMBER@34.71.198.208`
++ access using `ssh -i my_ecdsa_key.txt alunoNUMBER@34.71.198.208`
 
 `NUMBER` and the ssh key will be provided during the workshop.
 
