@@ -221,13 +221,16 @@ gtdbtk classify_wf -x fa --cpus 2 --genome_dir metabat/final.contigs.fa.metabat-
 Output from `checkm`, `gtdbtk`, and `metabat` can be further analyzed in `jupyter notebook` to produce some visualization and retrieve the abundance of the members of the microbial community.
 We first download the files locally on our laptop.
 ```
-scp -i Documents/CIIMAR/LEC_METAG_MICROBIAL/my_ecdsa_key nicola@34.71.198.208:gtdbtk/gtdbtk.bac120.summary.tsv Downloads/.
-
-scp -i Documents/CIIMAR/LEC_METAG_MICROBIAL/my_ecdsa_key nicola@34.71.198.208:checkm/storage/bin_stats.analyze.tsv Downloads/.
-
-scp -i Documents/CIIMAR/LEC_METAG_MICROBIAL/my_ecdsa_key nicola@34.71.198.208:metabat/final.contigs.fa.depth.txt Downloads/.
-
-scp -r -i Documents/CIIMAR/LEC_METAG_MICROBIAL/my_ecdsa_key nicola@34.71.198.208:metabat/final.contigs.fa.metabat-bins-20240819_221948 Downloads/.
+scp -i my_ecdsa_key nicola@34.71.198.208:gtdbtk/gtdbtk.bac120.summary.tsv Downloads/.
+```
+```
+scp -i my_ecdsa_key nicola@34.71.198.208:checkm/storage/bin_stats.analyze.tsv Downloads/.
+```
+```
+scp -i my_ecdsa_key nicola@34.71.198.208:metabat/final.contigs.fa.depth.txt Downloads/.
+```
+```
+scp -r -i my_ecdsa_key nicola@34.71.198.208:metabat/final.contigs.fa.metabat-bins-20240819_221948 Downloads/.
 ```
 Then, we run `jupyter notebook`.
 
