@@ -133,6 +133,15 @@ trimmomatic PE -threads 96 -phred33 -trimlog trim_log.log -summary trim_sum.log 
 ### Assembly
 
 Now that we completed the first quality step of our pipeline. It is time to assemble the reads in contigs using `megahit`.
+
+```
+mkdir trimm
+```
+
+```
+mv *fastq trimm/.
+```
+
 ```
 megahit -t 2 -o mega -1 trimm/M19-81_f_p.fastq,trimm/M19-84_f_p.fastq,trimm/M19-88_f_p.fastq -2 trimm/M19-81_r_p.fastq,trimm/M19-84_r_p.fastq,trimm/M19-88_r_p.fastq
 ```
