@@ -29,7 +29,7 @@ In order to allow the participants to run the analysis, a server has been provid
 To access the machine, please do:
 
 + download the "my_ecdsa_key" file 
-+ access using `ssh -i my_ecdsa_key alunoNUMBER@34.71.198.208`
++ access using `ssh -i my_ecdsa_key.txt alunoNUMBER@34.71.198.208`
 
 `NUMBER` and the ssh key will be provided during the workshop.
 
@@ -61,6 +61,7 @@ tmux ls
 ```
 
 # First Day
+[Welcome Session](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/Welcome_Session.pdf)
 ## Next-generation sequencing technologies and data generation
 ## Sampling protocols and standardization
 [Folder with lecture content](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/Sampling_Protocols_and_Standardization)
@@ -70,17 +71,22 @@ tmux ls
 ## Python in microbial ecology studies
 [Folder with lecture content](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/Python-microbial-ecology)
 ## Metabarcoding (amplicon sequencing) analysis workflow
-[Folder with lecture content]([/Metbarcoding-lectures](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/Metabarcoding-lectures))
+[Folder with lecture content](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/Metabarcoding-lectures)
 
 # Second Day
 ## Exploring Online Resources and Repositories I
+[Folder with lecture content](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/Practical_Example_Silva_NGS)
 ## Insights on data visualization and analysis
-[Folder with lecture content]([/Data-visualization](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/Data-visualization))
+[Folder with lecture content](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/Data-visualization)
 
 ## Metagenomics (shotgun sequencing) analysis workflow
+[Folder with lecture content](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/Metagenomic_analysis_workflow)
 ## Phylogenetic trees from high-throughput sequence data
+[Folder with lecture content](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/Phylogenetic_trees)
 ## Exploring Online Resources and Repositories II
+[Folder with lecture content](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/Meta_Microbial_online_resources)
 ## Alternative statistical and data analyses
+[Folder with lecture content](https://github.com/Nik3939/Meta_Microbial-Workshop-2024/tree/main/Meta_Microbial_Networks)
 
 # Third Day
 ## Hands-on Metabarcoding</summary>
@@ -102,8 +108,13 @@ mkdir fastqc_r
 
 Run fastqc.
 ```
-fastqc -o fastqc_r --threads 2 raw_data/M19-81_METAG_R1.fastq raw_data/M19-81_METAG_R2.fastq raw_data/M19-84_METAG_R1.fastq raw_data/M19-84_METAG_R2.fastq raw_data/M19-88_METAG_R1.fastq raw_data/M19-88_METAG_R2.fastq
+fastqc -o fastqc_r --threads 2 ../nicola/raw_data/M19-81_METAG_R1.fastq ../nicola/raw_data/M19-81_METAG_R2.fastq ../nicola/raw_data/M19-84_METAG_R1.fastq ../nicola/raw_data/M19-84_METAG_R2.fastq ../nicola/raw_data/M19-88_METAG_R1.fastq ../nicola/raw_data/M19-88_METAG_R2.fastq
 ```
+Download results
+```
+scp -r -i my_ecdsa_key.txt alunoNUMBER@34.71.198.208:fastqc_r .
+```
+
 
 Now a html report is present for each sample in the folder `fastqc_r`.
 
@@ -111,17 +122,28 @@ Now a html report is present for each sample in the folder `fastqc_r`.
 
 After assessing the quality of our sequences we need to remove sequences with low quality. For that, we are going to use `trimmomatic` to trim our sequences.
 ```
-trimmomatic PE -threads 96 -phred33 -trimlog trim_log.log -summary trim_sum.log raw_data/M19-81_METAG_R1.fastq raw_data/M19-81_METAG_R2.fastq M19-81_f_p.fastq M19-81_f_u.fastq M19-81_r_p.fastq M19-81_r_u.fastq LEADING:10 TRAILING:10 SLIDINGWINDOW:5:20 
-
-trimmomatic PE -threads 96 -phred33 -trimlog trim_log.log -summary trim_sum.log raw_data/M19-84_METAG_R1.fastq raw_data/M19-84_METAG_R2.fastq M19-84_f_p.fastq M19-84_f_u.fastq M19-84_r_p.fastq M19-84_r_u.fastq LEADING:10 TRAILING:10 SLIDINGWINDOW:5:20 
-
-trimmomatic PE -threads 96 -phred33 -trimlog trim_log.log -summary trim_sum.log raw_data/M19-88_METAG_R1.fastq raw_data/M19-88_METAG_R2.fastq M19-88_f_p.fastq M19-88_f_u.fastq M19-88_r_p.fastq M19-88_r_u.fastq LEADING:10 TRAILING:10 SLIDINGWINDOW:5:20 
+trimmomatic PE -threads 96 -phred33 -trimlog trim_log.log -summary trim_sum.log ../nicola/raw_data/M19-81_METAG_R1.fastq ../nicola/raw_data/M19-81_METAG_R2.fastq M19-81_f_p.fastq M19-81_f_u.fastq M19-81_r_p.fastq M19-81_r_u.fastq LEADING:10 TRAILING:10 SLIDINGWINDOW:5:20 
+```
+```
+trimmomatic PE -threads 96 -phred33 -trimlog trim_log.log -summary trim_sum.log ../nicola/raw_data/M19-84_METAG_R1.fastq ../nicola/raw_data/M19-84_METAG_R2.fastq M19-84_f_p.fastq M19-84_f_u.fastq M19-84_r_p.fastq M19-84_r_u.fastq LEADING:10 TRAILING:10 SLIDINGWINDOW:5:20 
+```
+```
+trimmomatic PE -threads 96 -phred33 -trimlog trim_log.log -summary trim_sum.log ../nicola/raw_data/M19-88_METAG_R1.fastq ../nicola/raw_data/M19-88_METAG_R2.fastq M19-88_f_p.fastq M19-88_f_u.fastq M19-88_r_p.fastq M19-88_r_u.fastq LEADING:10 TRAILING:10 SLIDINGWINDOW:5:20 
 ```
 ### Assembly
 
 Now that we completed the first quality step of our pipeline. It is time to assemble the reads in contigs using `megahit`.
+
 ```
-megahit -t 2 -o mega -1 trimm/M19-81_f_p.fastq,trimm/M19-84_f_p.fastq,trimm/M19-88_f_p.fastq -2 trimm/M19-81_r_p.fastq,trimm/M19-84_r_p.fastq,trimm/M19-88_r_p.fastq
+mkdir trimm
+```
+
+```
+mv *fastq trimm/.
+```
+
+```
+megahit -t 2 -o mega -1 ../nicola/trimm/M19-81_f_p.fastq,../nicola/trimm/M19-84_f_p.fastq,../nicola/trimm/M19-88_f_p.fastq -2 ../nicola/trimm/M19-81_r_p.fastq,../nicola/trimm/M19-84_r_p.fastq,../nicola/trimm/M19-88_r_p.fastq
 ```
 An output folder called `mega` will automatically created and it will store the results.
 
@@ -179,7 +201,7 @@ runMetaBat.sh mega/final.contigs.fa bowtie/M19-81.bam bowtie/M19-84.bam bowtie/M
 Now it is time for the last quality check, where we assess the completeness and contamination of our bins, together with other informative statistcs.
 Let's run the following command.
 ```
-checkm lineage_wf -t 2 -x fa metabat/final.contigs.fa.metabat-bins-20240819_221948 checkm
+checkm lineage_wf -t 5 -x fa ../nicola/metabat/final.contigs.fa.metabat-bins-20240819_221948 checkm
 ```
 
 ##### Taxonomy Assignment
@@ -199,13 +221,16 @@ gtdbtk classify_wf -x fa --cpus 2 --genome_dir metabat/final.contigs.fa.metabat-
 Output from `checkm`, `gtdbtk`, and `metabat` can be further analyzed in `jupyter notebook` to produce some visualization and retrieve the abundance of the members of the microbial community.
 We first download the files locally on our laptop.
 ```
-scp -i Documents/CIIMAR/LEC_METAG_MICROBIAL/my_ecdsa_key nicola@34.71.198.208:gtdbtk/gtdbtk.bac120.summary.tsv Downloads/.
-
-scp -i Documents/CIIMAR/LEC_METAG_MICROBIAL/my_ecdsa_key nicola@34.71.198.208:checkm/storage/bin_stats.analyze.tsv Downloads/.
-
-scp -i Documents/CIIMAR/LEC_METAG_MICROBIAL/my_ecdsa_key nicola@34.71.198.208:metabat/final.contigs.fa.depth.txt Downloads/.
-
-scp -r -i Documents/CIIMAR/LEC_METAG_MICROBIAL/my_ecdsa_key nicola@34.71.198.208:metabat/final.contigs.fa.metabat-bins-20240819_221948 Downloads/.
+scp -i my_ecdsa_key nicola@34.71.198.208:gtdbtk/gtdbtk.bac120.summary.tsv Downloads/.
+```
+```
+scp -i my_ecdsa_key nicola@34.71.198.208:checkm/storage/bin_stats.analyze.tsv Downloads/.
+```
+```
+scp -i my_ecdsa_key nicola@34.71.198.208:metabat/final.contigs.fa.depth.txt Downloads/.
+```
+```
+scp -r -i my_ecdsa_key nicola@34.71.198.208:metabat/final.contigs.fa.metabat-bins-20240819_221948 Downloads/.
 ```
 Then, we run `jupyter notebook`.
 
@@ -243,6 +268,24 @@ cat bin.12.ko.txt | t='*' awk '$1==ENVIRON["t"]{print $2, $3}' > bin.12.mapper.t
 ```
 
 Now we can use the online tool [KEGG Mapper Reconstruct](https://www.genome.jp/kegg/mapper/reconstruct.html) to map the genes to KEGG database.
+
+##### KEGG Decoder
+It is also possible to obtain a general overview of the completeness of the pathways present in our MAGs and the functional redundancy in the community using `KEGG Decoder`. This tool however, have some limitation and therefore need to be used carefully. 
+
+We first prepare the output from KOFAMSCAN by extracting only the significant matches and adding the name of our MAG at the beginning of every contig (this is required by KEGG Decoder).
+```
+cat bin.1.ko.txt | t='*' awk '$1==ENVIRON["t"]{print $2, $3}' | awk '{print "bin1_"$1,$2}'> sign.1.ko.txt
+cat bin.6.ko.txt | t='*' awk '$1==ENVIRON["t"]{print $2, $3}' | awk '{print "bin6_"$1,$2}'> sign.6.ko.txt
+cat bin.12.ko.txt | t='*' awk '$1==ENVIRON["t"]{print $2, $3}' | awk '{print "bin12_"$1,$2}'> sign.12.ko.txt
+```
+We then concatenate the files together in a singolar file that will be our input for KEGG Decoder.
+```
+cat sign.1.ko.txt sign.6.ko.txt sign.12.ko.txt > sign.3g.ko.txt
+```
+Finally, we execute KEGG Decoder.
+```
+KEGG-decoder --input sign.3g.ko.txt --output map.3g.list --vizoption static
+```
 
 ##### Functional Annotation - Biosynthetic gene clusters
 We will now use antiSMASH for the identification and annotation of biosynthetic gene clusters. antiSMASH can be used by a public [web version(https://antismash.secondarymetabolites.org/#!/start) or using a local installation, as we will perform here.

@@ -1,0 +1,187 @@
+DATASET_SIMPLEBAR
+#In simple bar charts, each ID is associated to a single numeric value which is displayed as a bar outside the tree.
+#lines starting with a hash are comments and ignored during parsing
+
+#=================================================================#
+#                    MANDATORY SETTINGS                           #
+#=================================================================#
+#select the separator which is used to delimit the data below (TAB,SPACE or COMMA).This separator must be used throughout this file.
+#SEPARATOR TAB
+#SEPARATOR SPACE
+SEPARATOR COMMA
+
+#label is used in the legend table (can be changed later)
+DATASET_LABEL,label 1
+
+#dataset color (can be changed later)
+COLOR,#ff0000
+
+#=================================================================#
+#                    OPTIONAL SETTINGS                            #
+#=================================================================#
+
+#=================================================================#
+#     all other optional settings can be set or changed later     #
+#           in the web interface (under 'Datasets' tab)           #
+#=================================================================#
+#dataset scale: you can simply set the values where the scale will be drawn
+#DATASET_SCALE,2000,10000,20000
+
+#or you can specify value, label, color, width, style and label size factor for each scale line (dash separated, format: VALUE-LABEL-COLOR-WIDTH-DASHED-LABEL_SCALE_FACTOR))
+#DATASET_SCALE,2000-2k line-#0000ff-5-1-1,10000-line at 10k-#ff0000-1-0-2,20000-3rd line-#00ff00-5-1-1
+
+#Each dataset can have a legend, which is defined using LEGEND_XXX fields below
+#For each row in the legend, there should be one shape, color and label.
+#Optionally, you can define an exact legend position using LEGEND_POSITION_X and LEGEND_POSITION_Y. To use automatic legend positioning, do NOT define these values
+#Optionally, shape scaling can be present (LEGEND_SHAPE_SCALES). For each shape, you can define a scaling factor between 0 and 1.
+#To order legend entries horizontally instead of vertically, set LEGEND_HORIZONTAL to 1
+#Shape should be a number between 1 and 6, or any protein domain shape definition.
+#1: square
+#2: circle
+#3: star
+#4: right pointing triangle
+#5: left pointing triangle
+#6: checkmark
+
+#LEGEND_TITLE,Dataset legend
+#LEGEND_POSITION_X,100
+#LEGEND_POSITION_Y,100
+#LEGEND_HORIZONTAL,0
+#LEGEND_SHAPES,1,2,3
+#LEGEND_COLORS,#ff0000,#00ff00,#0000ff
+#LEGEND_LABELS,value1,value2,value3
+#LEGEND_SHAPE_SCALES,1,1,0.5
+
+
+#maximum width
+#WIDTH,1000
+
+#left margin, used to increase/decrease the spacing to the next dataset. Can be negative, causing datasets to overlap.
+#MARGIN,0
+
+#always show internal values; if set, values associated to internal nodes will be displayed even if these nodes are not collapsed. It could cause overlapping in the dataset display.
+#SHOW_INTERNAL,0
+
+#show dashed lines between leaf labels and the dataset
+#DASHED_LINES,1
+
+#bar height factor; Default bar height will be slightly less than the available space between leaves, but you can set a multiplication factor here to increase/decrease it (values from 0 to 1 will decrease it, values above 1 will increase it)
+#HEIGHT_FACTOR,1
+
+#Display individual values above the bars
+#SHOW_VALUE,0
+
+#Bars are aligned to the node lines by default. Using BAR_SHIFT, you can move them all up/down by a fixed amount
+#BAR_SHIFT,0
+
+#BAR_ZERO specifies which dataset value will be used as a starting point for drawing the bars. Dataset values smaller than BAR_ZERO will be displayed to the left (possibly overlapping the tree, unless MARGIN is increased)
+#BAR_ZERO,0
+
+#border width; if set above 0, a border of specified width (in pixels) will be drawn around the bars
+#BORDER_WIDTH,0
+
+#border color; used when BORDER_WIDTH is above 0
+#BORDER_COLOR,#0000ff
+
+#Internal tree nodes can be specified using IDs directly, or using the 'last common ancestor' method described in iTOL help pages
+#=================================================================#
+#       Actual data follows after the "DATA" keyword              #
+#=================================================================#
+DATA
+CAR29_Bin_15-contigs,2352423
+SM32_Bin_27_2-contigs,5918644
+SM18_Bin_64-contigs,5124775
+CAR29_Bin_55_1-contigs,5034211
+CAR32_Bin_25_1-contigs,7080584
+SM32_Bin_18_1-contigs,8128767
+SM32_Bin_43_1-contigs,5793454
+M1_Bin_79_1-contigs,5308766
+M1_Bin_47_1-contigs,5402394
+SM10_Bin_10-contigs,5309882
+SM10_Bin_93_1-contigs,3063568
+M4_Bin_16_1-contigs,2900333
+SM10_Bin_91_1-contigs,9744864
+SM10_Bin_91_2-contigs,6167586
+SM10_Bin_14_1-contigs,9797313
+CAR20_Bin_12-contigs,6703759
+CAR29_Bin_2-contigs,3143938
+CAR20_Bin_1_1-contigs,9341560
+PC5_Bin_73_1-contigs,4911869
+CAR29_Bin_87-contigs,5318918
+M8_Bin_134-contigs,4292642
+M8_Bin_33-contigs,4627080
+M4_Bin_47_1-contigs,5598598
+SM10_Bin_2_1-contigs,9131518
+SM10_Bin_61_1-contigs,11246361
+SM1_Bin_98_1-contigs,8757634
+SM1_Bin_41_1-contigs,9479072
+CAR32_Bin_38_1-contigs,9363853
+M4_Bin_37_1-contigs,5058231
+M4_Bin_33_1-contigs,3446372
+M4_Bin_2_1-contigs,5616036
+M1_Bin_103_1-contigs,4372332
+M8_Bin_101-contigs,6525990
+M8_Bin_53-contigs,5956960
+PC4_Bin_72-contigs,7043820
+PC1_Bin_125-contigs,5483464
+M8_Bin_129-contigs,6418851
+PC1_Bin_3-contigs,6093203
+PC4_Bin_38-contigs,5451981
+SM10_Bin_110_1-contigs,8903466
+M1_Bin_15_1-contigs,6667262
+SM25_Bin_41-contigs,4934819
+PC1_Bin_54_1-contigs,6208895
+SM25_Bin_115-contigs,6100157
+PC4_Bin_122_1-contigs,6441179
+SM19_Bin_22-contigs,7029899
+SM19_Bin_23-contigs,5940320
+SM1_Bin_29-contigs,7940578
+PC5_Bin_54-contigs,7090231
+SM18_Bin_67_1-contigs,12760852
+CAR21_Bin_71_1-contigs,7356357
+SM19_Bin_33-contigs,6709081
+SM14_Bin_55-contigs,6401425
+SM18_Bin_90-contigs,5684793
+CAR21_Bin_44-contigs,7207151
+SM15_Bin_77_1-contigs,4195821
+CAR21_Bin_71_2-contigs,5833013
+CAR20_Bin_74-contigs,7370330
+SM23_Bin_63-contigs,7881755
+CAR21_Bin_40-contigs,6084060
+CAR21_Bin_42-contigs,NA
+CAR21_Bin_37_1-contigs,5438289
+CAR32_Bin_35_1-contigs,3656814
+CAR32_Bin_67_1-contigs,12017545
+CAR21_Bin_89_1-contigs,8253117
+SM14_Bin_63_1-contigs,7332748
+SM18_Bin_33_1-contigs,7217674
+SM19_Bin_4-contigs,8533285
+SM14_Bin_51_1-contigs,7446421
+SM1_Bin_123_2-contigs,10572261
+PC5_Bin_46_1-contigs,10004599
+PC5_Bin_74_1-contigs,7086277
+PC5_Bin_46_2-contigs,3377203
+SM15_Bin_70_1-contigs,2916076
+SM1_Bin_60_2-contigs,5723793
+SM1_Bin_95-contigs,4039544
+PC5_Bin_26_1-contigs,5061287
+CAR21_Bin_11_1-contigs,5453864
+CAR32_Bin_37-contigs,4526160
+PC5_Bin_26_2-contigs,5004801
+SM1_Bin_60_1-contigs,6507900
+SM1_Bin_60_3-contigs,4034850
+PC5_Bin_85-contigs,3993613
+SM1_Bin_3-contigs,4950209
+PC5_Bin_28-contigs,7967938
+SM1_Bin_10-contigs,9081553
+SM15_Bin_77_2-contigs,8943912
+CAR19_Bin_64_1-contigs,10388168
+SM23_Bin_16-contigs,7357601
+SM23_Bin_25-contigs,4590337
+SM10_Bin_58-contigs,6498614
+SM1_Bin_6_1-contigs,17025605
+PC5_Bin_69_1-contigs,11515874
+SM1_Bin_7-contigs,6787577
+CAR32_Bin_49-contigs,6362913
+PC5_Bin_53_1-contigs,5470523
+PC5_Bin_72_1-contigs,14209560
